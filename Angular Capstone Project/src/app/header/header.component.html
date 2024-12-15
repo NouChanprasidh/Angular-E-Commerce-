@@ -1,0 +1,154 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="header-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="user-menu">
+              <ul>
+                <li>
+                  <a href="#"><i class="fa fa-user"></i> My Account</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-heart"></i> Wishlist</a>
+                </li>
+                <li>
+                  <a routerLink="/cart"><i class="fa fa-user"></i> My Cart</a>
+                </li>
+                <li>
+                  <a routerLink="/checkout"
+                    ><i class="fa fa-user"></i> Checkout</a
+                  >
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-user"></i> Login</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="header-right">
+              <ul class="list-unstyled list-inline">
+                <li class="dropdown dropdown-small">
+                  <a
+                    data-toggle="dropdown"
+                    data-hover="dropdown"
+                    class="dropdown-toggle"
+                    href="#"
+                    ><span class="key">currency :</span
+                    ><span class="value">USD </span><b class="caret"></b
+                  ></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">USD</a></li>
+                    <li><a href="#">RIEL</a></li>
+
+                  </ul>
+                </li>
+
+                <li class="dropdown dropdown-small">
+                  <a
+                    data-toggle="dropdown"
+                    data-hover="dropdown"
+                    class="dropdown-toggle"
+                    href="#"
+                    ><span class="key">language :</span
+                    ><span class="value">English </span><b class="caret"></b
+                  ></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Khmer</a></li>
+                    <li><a href="#">Chinese</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End header area -->
+    <div class="site-branding-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="logo">
+              <h1>
+                <a href="./"><img src="../../assets/img/logo.png" /></a>
+              </h1>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6">
+            <div class="shopping-item">
+              <a routerLink="/cart">
+                Cart - <span class="cart-amunt">${{ cartTotal }}</span>
+                <i class="fa fa-shopping-cart"></i>
+                <span class="product-count">{{ itemCount }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End site branding area -->
+    <div class="mainmenu-area">
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a routerLink="">Home</a></li>
+              <li><a routerLink="/products">Shop page</a></li>
+              <li><a routerLink="/cart">Cart</a></li>
+              <li><a routerLink="/checkout">Checkout</a></li>
+              <li class="nav-item" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
+                <a class="nav-link">Categories <i class="fa fa-angle-down"></i></a>
+                <div class="category-dropdown" [class.show]="showDropdown">
+                  <div class="category-group">
+                    <h3>Laptops</h3>
+                    <ul>
+                      <li><a routerLink="/products" [queryParams]="{category: 'gaming'}">Gaming Laptops</a></li>
+                      <li><a routerLink="/products" [queryParams]="{category: 'business'}">Business Laptops</a></li>
+                      <li><a routerLink="/products" [queryParams]="{category: 'ultrabook'}">Ultrabooks</a></li>
+                    </ul>
+                  </div>
+                  <div class="category-group">
+                    <h3>Accessories</h3>
+                    <ul>
+                      <li><a routerLink="/products" [queryParams]="{category: 'mouse'}">Mouse</a></li>
+                      <li><a routerLink="/products" [queryParams]="{category: 'keyboard'}">Keyboard</a></li>
+                      <li><a routerLink="/products" [queryParams]="{category: 'headset'}">Headsets</a></li>
+                    </ul>
+                  </div>
+                  <div class="category-group">
+                    <h3>Gaming Gear</h3>
+                    <ul>
+                      <li><a routerLink="/products" [queryParams]="{category: 'chair'}">Gaming Chair</a></li>
+                      <li><a routerLink="/products" [queryParams]="{category: 'controller'}">Gaming Controller</a></li>
+                      <li><a routerLink="/products" [queryParams]="{category: 'mouse'}">Gaming Mouse</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li><a routerLink="#">Others</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End mainmenu area -->
+  </div>
+</div>

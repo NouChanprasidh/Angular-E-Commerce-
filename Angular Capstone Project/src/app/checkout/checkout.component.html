@@ -1,0 +1,123 @@
+<div class="container mt-5">
+  <h2>Checkout</h2>
+  @if (showConfirmation) {
+    <div class="confirmation-message">
+      <div class="card">
+        <div class="card-body text-center">
+          <i class="fa fa-check-circle confirmation-icon"></i>
+          <h3>Order Confirmed!</h3>
+          <p>Thank you for your order. Your order number is: <strong>{{orderNumber}}</strong></p>
+          <p>A confirmation email has been sent to {{shippingInfo.email}}</p>
+          <p>You will be redirected to the home page in 5 seconds...</p>
+        </div>
+      </div>
+    </div>
+  } @else {
+    @if (cartItems$ | async; as items) {
+      @if (items.length > 0) {
+        <div class="row">
+          <!-- Order Summary -->
+          <div class="col-md-8">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h4>Order Summary</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (item of items; track item.id) {
+                        <tr>
+                          <td>{{item.name}}</td>
+                          <td>${{item.price}}</td>
+                          <td>{{item.quantity}}</td>
+                          <td>${{item.price * (item.quantity || 1)}}</td>
+                        </tr>
+                      }
+                      <tr>
+                        <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                        <td><strong>${{getCartTotal()}}</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Information -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h4>Shipping Information</h4>
+              </div>
+              <div class="card-body">
+                <form (ngSubmit)="placeOrder()">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="name" 
+                      [(ngModel)]="shippingInfo.fullName"
+                      name="fullName"
+                      required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input 
+                      type="email" 
+                      class="form-control" 
+                      id="email" 
+                      [(ngModel)]="shippingInfo.email"
+                      name="email"
+                      required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea 
+                      class="form-control" 
+                      id="address" 
+                      rows="3" 
+                      [(ngModel)]="shippingInfo.address"
+                      name="address"
+                      required></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input 
+                      type="tel" 
+                      class="form-control" 
+                      id="phone" 
+                      [(ngModel)]="shippingInfo.phone"
+                      name="phone"
+                      required>
+                  </div>
+                  <button 
+                    type="submit" 
+                    class="btn btn-success w-100"
+                    [disabled]="!isFormValid()">
+                    Place Order
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      } @else {
+        <div class="text-center my-5">
+          <h3>Your cart is empty</h3>
+          <a routerLink="/products" class="btn btn-primary mt-3">Start Shopping</a>
+        </div>
+      }
+    }
+  }
+</div>

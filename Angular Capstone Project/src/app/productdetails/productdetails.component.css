@@ -1,0 +1,49 @@
+a{ text-decoration: none}
+
+.product-image-container {
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.product-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.product-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.price-section {
+  margin: 1.5rem 0;
+}
+
+.current-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #5a88ca;
+  margin-right: 1rem;
+}
+
+.old-price {
+  font-size: 1.5rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.product-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
